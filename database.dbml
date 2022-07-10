@@ -1,0 +1,108 @@
+// Project name, databse type, and description
+Project data_engineering_project {
+    database_type: 'PostgreSQL'
+    Note: 'Main database that keeps data related to our contacts and from which
+    an API serves information to important consumers.'
+}
+
+// Definition of main tables
+Table company.contact {
+    id integer [pk, unique, increment, ref: < company.contact_address.contact_id, ref: < company.contact_department.contact_id]
+    first_name varchar(128) [not null]
+    last_name varchar(128) [not null]
+    company_id integer [ref: > company.company.id]
+    created_at timestamp [default: `CURRENT_TIMESTAMP`]
+    created_by varchar(64) [default: `CURRENT_USER`]
+    updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+    updated_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
+    deleted_by varchar(64) [default: `CURRENT_USER`]
+}
+
+Table company.company {
+    id integer [pk, unique, increment]
+    name varchar(128) [not null]
+    created_at timestamp [default: `CURRENT_TIMESTAMP`]
+    created_by varchar(64) [default: `CURRENT_USER`]
+    updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+    updated_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
+    deleted_by varchar(64) [default: `CURRENT_USER`]
+}
+
+Table company.address {
+    id integer [pk, unique, increment, ref: < company.contact_address.address_id]
+    address_line_1 varchar(128)
+    address_line_2 varchar(128)
+    city varchar(64)
+    state varchar(64)
+    zip_code varchar(16)
+    created_at timestamp [default: `CURRENT_TIMESTAMP`]
+    created_by varchar(64) [default: `CURRENT_USER`]
+    updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+    updated_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
+    deleted_by varchar(64) [default: `CURRENT_USER`]
+}
+
+Table company.phone {
+    id integer [pk, unique, increment]
+    contact_id integer [not null, ref: > company.contact.id]
+    phone_number varchar(128) [not null]
+    phone_number_2 varchar(128)
+    created_at timestamp [default: `CURRENT_TIMESTAMP`]
+    created_by varchar(64) [default: `CURRENT_USER`]
+    updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+    updated_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
+    deleted_by varchar(64) [default: `CURRENT_USER`]
+}
+
+Table company.email {
+    id integer [pk, unique, increment]
+    contact_id integer [not null, ref: > company.contact.id]
+    email_address varchar(128) [not null]
+    created_at timestamp [default: `CURRENT_TIMESTAMP`]
+    created_by varchar(64) [default: `CURRENT_USER`]
+    updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+    updated_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
+    deleted_by varchar(64) [default: `CURRENT_USER`]
+}
+
+Table company.department {
+    id integer [pk, unique, increment, ref: < company.contact_department.department_id]
+    name varchar(32) [not null]
+    company_id integer [not null, ref: > company.company.id] 
+    created_at timestamp [default: `CURRENT_TIMESTAMP`]
+    created_by varchar(64) [default: `CURRENT_USER`]
+    updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+    updated_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
+    deleted_by varchar(64) [default: `CURRENT_USER`]
+}
+
+// Definition of tables to relate entities
+Table company.contact_address {
+    id integer [pk, unique, increment]
+    contact_id integer [not null]
+    address_id integer [not null]
+    created_at timestamp [default: `CURRENT_TIMESTAMP`]
+    created_by varchar(64) [default: `CURRENT_USER`]
+    updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+    updated_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
+    deleted_by varchar(64) [default: `CURRENT_USER`]
+}
+
+Table company.contact_department {
+    id integer [pk, unique, increment]
+    contact_id integer [not null]
+    department_id integer [not null]
+    created_at timestamp [default: `CURRENT_TIMESTAMP`]
+    created_by varchar(64) [default: `CURRENT_USER`]
+    updated_at timestamp [default: `CURRENT_TIMESTAMP`]
+    updated_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
+    deleted_by varchar(64) [default: `CURRENT_USER`]
+}

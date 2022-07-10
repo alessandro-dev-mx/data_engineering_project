@@ -22,6 +22,18 @@ Another relevant component of the project is the development of the different pi
 - The server where the API is going to be deployed must have access only to the postgres
 database. And the centos server must have access only to the postgres database as well
 
+## Assumptions
+
+1. Every single one of our contacts work for a single company at a time
+2. Our contacts may have more than one address where we may reach them
+3. Our contacts at least have one phone number, but may have more than one
+4. Our contacts at least have one email address, but may have more than one
+5. Our contacts may be working in more than one department at a time (reason why we have more than one record for some of our contacts)
+6. Primary keys used when ingesting data into the PostgreSQL database are the first_name and last_name
+7. In case an entity is found twice in the CSV the following logics is going to be applied:
+7.1 If the department is different proceed to insert it as a new relationship with our contact
+7.2 If the address is different proceed to insert it as a new relationship with our contact (no record has that condition in the sample CSV, but adding the assumption since it seems like a nice opportunity to make it more interesting)
+
 # Installation
 
 # Usage
