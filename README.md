@@ -34,6 +34,9 @@ database. And the centos server must have access only to the postgres database a
 7.1 If the department is different proceed to insert it as a new relationship with our contact
 7.2 If the address is different proceed to insert it as a new relationship with our contact (no record has that condition in the sample CSV, but adding the assumption since it seems like a nice opportunity to make it more interesting)
 
+## Entity-Relationship Diagram
+![Database Proposed Design](./documentation/img/data_engineering_project.png)
+
 # Installation
 
 # Usage
