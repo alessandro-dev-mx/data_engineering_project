@@ -33,6 +33,7 @@ database. And the centos server must have access only to the postgres database a
 7. In case an entity is found twice in the CSV the following logics is going to be applied:
 7.1 If the department is different proceed to insert it as a new relationship with our contact
 7.2 If the address is different proceed to insert it as a new relationship with our contact (no record has that condition in the sample CSV, but adding the assumption since it seems like a nice opportunity to make it more interesting)
+8. No combination of first name and last name refers to a different person
 
 ## Entity-Relationship Diagram
 ![Database Proposed Design](./documentation/img/data_engineering_project.png)
