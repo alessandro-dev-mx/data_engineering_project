@@ -1,0 +1,23 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_DB: de_project
+      POSTGRES_USER: app_user
+      POSTGRES_PASSWORD: app_password
+    volumes:
+      - ./sql/init:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    networks:
+      - postgres
+  centos:
+    image: centos
+    networks:
+      - postgres
+networks:
+  postgres:
+    driver: bridge
