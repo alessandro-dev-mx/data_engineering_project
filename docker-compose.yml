@@ -16,6 +16,9 @@ services:
       - postgres
   centos:
     image: centos
+    environment:
+      CREDS_FILENAME: ./resources/creds.yam
+      ENVIRONMENT: develop
     networks:
       - postgres
 networks:
