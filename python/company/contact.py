@@ -21,19 +21,33 @@ def insert_contact(cur: object, first_name: str, last_name: str,
     """
 
     insert_sql = '''
-        INSERT INTO company.contact (
-            first_name
-            , last_name
-            , company_id
+        WITH existing_contact AS (
+            SELECT
+                id
+            FROM 
+                company.contact
+            WHERE
+                first_name != %(first_name)s
+                AND last_name != %(last_name)s
+        ), insert_contact AS (
+            INSERT INTO company.contact (
+                first_name
+                , last_name
+                , company_id
+            )
+            SELECT
+                %(first_name)s
+                , %(last_name)s
+                , %(company_id)s
+            WHERE
+                NOT EXISTS (SELECT 1 FROM existing_contact)
+            RETURNING id
         )
-        SELECT
-            %(first_name)s
-            , %(last_name)s
-            , %(company_id)s
-        FROM company.contact
-        WHERE
-            first_name != %(first_name)s
-            AND last_name != %(last_name)s
+        SELECT id
+        FROM existing_contact
+        UNION ALL
+        SELECT id
+        FROM insert_contact
     '''
 
     params = {
@@ -42,9 +56,7 @@ def insert_contact(cur: object, first_name: str, last_name: str,
         'company_id': company_id
     }
 
-    res = cur.execute(insert_sql, params)
+    cur.execute(insert_sql, params)
+    res = cur.fetchone()
 
-    print('res is')
-    print(res)
-
-    return 1
+    return res.get('id')

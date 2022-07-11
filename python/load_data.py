@@ -13,9 +13,11 @@ import csv
 import logging
 import os
 
-from utils.databases import create_db_conn
-from company.contact import insert_contact
+
 from company.company import insert_company
+from company.contact import insert_contact
+from psycopg2.extras import DictCursor
+from utils.databases import create_db_conn
 
 # TODO: Create proper class and configuration for the logging module
 logging.basicConfig(level=logging.DEBUG)
@@ -27,13 +29,22 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT', 'develop')
 
 def process_record(cur, record: dict):
 
+    # Obtain all the required fields to insert data into our different
+    # PostgreSQL table
     company_name = record.get('company_name')
-    insert_company(cur, company_name)
+    first_name = record.get('first_name')
+    last_name = record.get('last_name')
+
+    # Obtain the Company ID of the given company name by checking first if the
+    # record exists or by inserting one, thus generating a SK
+    company_id = insert_company(cur, company_name)
+
+    contact_id = insert_contact(cur, first_name, last_name, company_id)
 
 
 def process_records(conn, filename: str):
 
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory=DictCursor)
 
     with open(filename, 'r') as input_file:
         csv_reader = csv.DictReader(input_file)

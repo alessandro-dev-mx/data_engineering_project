@@ -45,12 +45,7 @@ def insert_company(cur: object, name: str) -> int:
         'name': name
     }
 
-    print('printing dynamic query')
-    print(cur.mogrify(insert_sql, params))
+    cur.execute(insert_sql, params)
+    res = cur.fetchone()
 
-    res = cur.execute(insert_sql, params)
-
-    print('res is')
-    print(res)
-
-    return 1
+    return res.get('id')
