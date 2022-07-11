@@ -15,8 +15,8 @@ Table company.contact {
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
     updated_by varchar(64) [default: `CURRENT_USER`]
-    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
-    deleted_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp
+    deleted_by varchar(64)
 }
 
 Table company.company {
@@ -26,8 +26,8 @@ Table company.company {
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
     updated_by varchar(64) [default: `CURRENT_USER`]
-    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
-    deleted_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp
+    deleted_by varchar(64)
 }
 
 Table company.address {
@@ -41,8 +41,8 @@ Table company.address {
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
     updated_by varchar(64) [default: `CURRENT_USER`]
-    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
-    deleted_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp
+    deleted_by varchar(64)
 }
 
 Table company.phone {
@@ -54,8 +54,8 @@ Table company.phone {
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
     updated_by varchar(64) [default: `CURRENT_USER`]
-    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
-    deleted_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp
+    deleted_by varchar(64)
 }
 
 Table company.email {
@@ -66,8 +66,8 @@ Table company.email {
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
     updated_by varchar(64) [default: `CURRENT_USER`]
-    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
-    deleted_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp
+    deleted_by varchar(64)
 }
 
 Table company.department {
@@ -78,8 +78,8 @@ Table company.department {
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
     updated_by varchar(64) [default: `CURRENT_USER`]
-    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
-    deleted_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp
+    deleted_by varchar(64)
 }
 
 // Definition of tables to relate entities
@@ -91,8 +91,8 @@ Table company.contact_address {
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
     updated_by varchar(64) [default: `CURRENT_USER`]
-    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
-    deleted_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp
+    deleted_by varchar(64)
 }
 
 Table company.contact_department {
@@ -103,6 +103,6 @@ Table company.contact_department {
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
     updated_by varchar(64) [default: `CURRENT_USER`]
-    deleted_at timestamp [default: `CURRENT_TIMESTAMP`]
-    deleted_by varchar(64) [default: `CURRENT_USER`]
+    deleted_at timestamp
+    deleted_by varchar(64)
 }
