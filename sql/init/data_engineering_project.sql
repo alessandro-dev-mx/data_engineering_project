@@ -9,8 +9,8 @@ CREATE TABLE "company"."contact" (
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "updated_by" varchar(64) DEFAULT (CURRENT_USER),
-  "deleted_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
-  "deleted_by" varchar(64) DEFAULT (CURRENT_USER)
+  "deleted_at" timestamp,
+  "deleted_by" varchar(64)
 );
 
 CREATE TABLE "company"."company" (
@@ -20,8 +20,8 @@ CREATE TABLE "company"."company" (
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "updated_by" varchar(64) DEFAULT (CURRENT_USER),
-  "deleted_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
-  "deleted_by" varchar(64) DEFAULT (CURRENT_USER)
+  "deleted_at" timestamp,
+  "deleted_by" varchar(64)
 );
 
 CREATE TABLE "company"."address" (
@@ -35,8 +35,8 @@ CREATE TABLE "company"."address" (
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "updated_by" varchar(64) DEFAULT (CURRENT_USER),
-  "deleted_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
-  "deleted_by" varchar(64) DEFAULT (CURRENT_USER)
+  "deleted_at" timestamp,
+  "deleted_by" varchar(64)
 );
 
 CREATE TABLE "company"."phone" (
@@ -48,8 +48,8 @@ CREATE TABLE "company"."phone" (
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "updated_by" varchar(64) DEFAULT (CURRENT_USER),
-  "deleted_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
-  "deleted_by" varchar(64) DEFAULT (CURRENT_USER)
+  "deleted_at" timestamp,
+  "deleted_by" varchar(64)
 );
 
 CREATE TABLE "company"."email" (
@@ -60,8 +60,8 @@ CREATE TABLE "company"."email" (
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "updated_by" varchar(64) DEFAULT (CURRENT_USER),
-  "deleted_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
-  "deleted_by" varchar(64) DEFAULT (CURRENT_USER)
+  "deleted_at" timestamp,
+  "deleted_by" varchar(64)
 );
 
 CREATE TABLE "company"."department" (
@@ -72,8 +72,8 @@ CREATE TABLE "company"."department" (
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "updated_by" varchar(64) DEFAULT (CURRENT_USER),
-  "deleted_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
-  "deleted_by" varchar(64) DEFAULT (CURRENT_USER)
+  "deleted_at" timestamp,
+  "deleted_by" varchar(64)
 );
 
 CREATE TABLE "company"."contact_address" (
@@ -84,8 +84,8 @@ CREATE TABLE "company"."contact_address" (
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "updated_by" varchar(64) DEFAULT (CURRENT_USER),
-  "deleted_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
-  "deleted_by" varchar(64) DEFAULT (CURRENT_USER)
+  "deleted_at" timestamp,
+  "deleted_by" varchar(64)
 );
 
 CREATE TABLE "company"."contact_department" (
@@ -96,8 +96,8 @@ CREATE TABLE "company"."contact_department" (
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "updated_by" varchar(64) DEFAULT (CURRENT_USER),
-  "deleted_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
-  "deleted_by" varchar(64) DEFAULT (CURRENT_USER)
+  "deleted_at" timestamp,
+  "deleted_by" varchar(64)
 );
 
 ALTER TABLE "company"."contact_address" ADD FOREIGN KEY ("contact_id") REFERENCES "company"."contact" ("id");
