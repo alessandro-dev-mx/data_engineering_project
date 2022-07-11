@@ -55,7 +55,7 @@ CREATE TABLE "company"."phone" (
 CREATE TABLE "company"."email" (
   "id" SERIAL UNIQUE PRIMARY KEY,
   "contact_id" integer NOT NULL,
-  "email_address" varchar(128) NOT NULL,
+  "email_address" varchar(128) UNIQUE NOT NULL,
   "created_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),

@@ -61,7 +61,7 @@ Table company.phone {
 Table company.email {
     id integer [pk, unique, increment]
     contact_id integer [not null, ref: > company.contact.id]
-    email_address varchar(128) [not null]
+    email_address varchar(128) [not null, unique]
     created_at timestamp [default: `CURRENT_TIMESTAMP`]
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]
