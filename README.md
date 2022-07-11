@@ -37,10 +37,22 @@ database. And the centos server must have access only to the postgres database a
 ## Entity-Relationship Diagram
 ![Database Proposed Design](./documentation/img/data_engineering_project.png)
 
+# Project Structure
+
+## data
+This directory stores the files with the data for the initial data loading process.
+
+## documentation
+This folder stores the files that explain technically the project and its
+components.
+
+## sql
+
+### init
+This path stores the `.sql` file(s) that creates the database overall structure for our Data Engineering Project.
+
 # Installation
 
 # Usage
-
-# Design
 
 # Final Thoughts
