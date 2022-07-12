@@ -1,18 +1,29 @@
+"""
+
+Project: Data Engineering Project
+Author: Alessandro C.
+
+Description:
+Module with functions related to the manipulation of the company related
+entities from the de_project.company schema.
+
+"""
+
+import logging
+
+
 def insert_company(cur: object, name: str) -> int:
     """Executes an INSERT INTO statement to add a new record to the
     company.contact table. This insertion will ignore the record if it already
     exists in the table. This validation is done at the moment of insertion by
-    using the natural keys of such table: first_name and last_name
+    using the natural keys of such table: name
 
-    :param cur: _description_
-    :type cur: object
-    :param first_name: _description_
-    :type first_name: str
-    :param last_name: _description_
-    :type last_name: str
-    :param company_id: _description_
-    :type company_id: int
-    :return: _description_
+    :param cur: Allows Python code to execute PostgreSQL command in a database
+    session
+    :type cur: psycopg2.cursor
+    :param name: Name of the company where our contacts work
+    :type name: str
+    :return: ID of the created or found company
     :rtype: int
     """
 
@@ -45,7 +56,12 @@ def insert_company(cur: object, name: str) -> int:
         'name': name
     }
 
+    logging.debug(f'Query to create/fetch company: {cur.mogrify(insert_sql, params)}')
+
     cur.execute(insert_sql, params)
     res = cur.fetchone()
+    id = res.get('id')
 
-    return res.get('id')
+    logging.debug(f'Finished executing query to create/fetch company: {id}')
+
+    return id
