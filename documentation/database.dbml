@@ -49,7 +49,7 @@ Table company.phone {
     id integer [pk, unique, increment]
     contact_id integer [not null, ref: > company.contact.id]
     phone_number varchar(128) [not null]
-    phone_number_2 varchar(128)
+    preference_order integer
     created_at timestamp [default: `CURRENT_TIMESTAMP`]
     created_by varchar(64) [default: `CURRENT_USER`]
     updated_at timestamp [default: `CURRENT_TIMESTAMP`]

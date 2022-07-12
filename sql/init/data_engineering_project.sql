@@ -43,7 +43,7 @@ CREATE TABLE "company"."phone" (
   "id" SERIAL UNIQUE PRIMARY KEY,
   "contact_id" integer NOT NULL,
   "phone_number" varchar(128) NOT NULL,
-  "phone_number_2" varchar(128),
+  "preference_order" integer,
   "created_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
   "created_by" varchar(64) DEFAULT (CURRENT_USER),
   "updated_at" timestamp DEFAULT (CURRENT_TIMESTAMP),
