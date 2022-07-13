@@ -3,7 +3,7 @@ version: '3.1'
 services:
   db:
     image: postgres
-    restart: always
+    # restart: always
     environment:
       POSTGRES_DB: de_project
       POSTGRES_USER: app_user
@@ -15,9 +15,15 @@ services:
     networks:
       - postgres
   centos:
-    image: centos
+    build:
+      context: .
+      dockerfile: idl.Dockerfile
+    depends_on:
+      - db
+    restart: on-failure
     environment:
-      CREDS_FILENAME: ./resources/creds.yam
+      CREDS_FILENAME: resources/config/creds.yaml
+      DATA_FILENAME: resources/data/sample.csv
       ENVIRONMENT: develop
     networks:
       - postgres
